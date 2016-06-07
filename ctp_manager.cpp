@@ -14,7 +14,7 @@ void ctp_manager::init()
 }
 bool ctp_manager::check_quote_init_para()
 {
-    if(cfg_info.getparam("QUOTE_FRONT_ADDR")=="")
+    if(cfg_info.get_para("QUOTE_FRONT_ADDR")=="")
     {
         return false;
     }

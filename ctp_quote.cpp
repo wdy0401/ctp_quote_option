@@ -38,13 +38,13 @@ void ctp_quote::init()
 
     req=new CThostFtdcReqUserLoginField;
     memset(req, 0, sizeof(*req));
-    strncpy(req->BrokerID,const_cast<char*>(cfg_info.getparam("BROKER_ID").c_str()),sizeof(req->BrokerID));
-    strncpy(req->UserID,const_cast<char*>(cfg_info.getparam("INVESTOR_ID").c_str()),sizeof(req->UserID));
-    strncpy(req->Password,const_cast<char*>(cfg_info.getparam("PASSWORD").c_str()),sizeof(req->Password));
+    strncpy(req->BrokerID,const_cast<char*>(cfg_info.get_para("BROKER_ID").c_str()),sizeof(req->BrokerID));
+    strncpy(req->UserID,const_cast<char*>(cfg_info.get_para("INVESTOR_ID").c_str()),sizeof(req->UserID));
+    strncpy(req->Password,const_cast<char*>(cfg_info.get_para("PASSWORD").c_str()),sizeof(req->Password));
 
 
     ppInstrumentID=new char * [MAX_CONTRACT_NUMBER];
-    list<string> contracts=wfunction::splitstring(cfg_info.getparam("INSTRUMENT_ID"));
+    list<string> contracts=wfunction::splitstring(cfg_info.get_para("INSTRUMENT_ID"));
     for(list<string>::iterator iter=contracts.begin();iter!=contracts.end();iter++)
     {
         ppInstrumentID[nppInstrumentID]=new char [MAX_CONTRACT_NAME];
@@ -61,7 +61,7 @@ void ctp_quote::init()
 void ctp_quote::login()
 {
     pUserApi->RegisterSpi(this);
-    pUserApi->RegisterFront(const_cast<char*>(cfg_info.getparam("QUOTE_FRONT_ADDR").c_str()));
+    pUserApi->RegisterFront(const_cast<char*>(cfg_info.get_para("QUOTE_FRONT_ADDR").c_str()));
     pUserApi->Init();
     pUserApi->Join();
 }
@@ -147,7 +147,7 @@ bool ctp_quote::IsErrorRspInfo(CThostFtdcRspInfoField *pRspInfo)
 char *ctp_quote::mk_quote_con_dir()
 {
     cerr << endl << "mk_quote_con_dir" <<endl;
-    string exedir=cfg_info.getparam("QUOTE_CON_PATH");
+    string exedir=cfg_info.get_para("QUOTE_CON_PATH");
     if(exedir.size()>0)
     {
         wfunction::wmkdir(exedir);

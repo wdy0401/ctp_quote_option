@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
         cfg_info.addcfgfile(cl->get_para("ctr_file"));
     }
     //set para
-    if(!ctp_quote_log.set_file(cfg_info.getparam("quote_dir")+"/"+QDateTime::currentDateTime().toString("yyyyMMdd_hh_mm_ss").toStdString()+".csv"))
+    if(!ctp_quote_log.set_file(cfg_info.get_para("quote_dir")+"/"+QDateTime::currentDateTime().toString("yyyyMMdd_hh_mm_ss").toStdString()+".csv"))
     {
         cerr<<"STDERR qoute dir error"<<endl;
         return 0;
