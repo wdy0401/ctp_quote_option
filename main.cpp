@@ -25,7 +25,7 @@
 using namespace std;
 
 wtimer tm;
-cfg simu_cfg;
+cfg cfg_info;
 ctp_log ctp_quote_log;//qoute log
 
 
@@ -37,29 +37,27 @@ int main(int argc, char *argv[])
 	//reg string
     qRegisterMetaType<string>("std::string");
 
+    udp_sender sender;
     cmd_line * cl=new cmd_line(argc,argv);
+    ctp_manager * cm=new ctp_manager();
 
-    //load simu para
-    simu_cfg.setcfgfile(cl->get_para("cfg"));
-
-    //add contract
+    //add init info
+    cfg_info.setcfgfile(cl->get_para("cfg"));
     if(cl->has_para("ctr_file"))
     {
-        simu_cfg.addcfgfile(cl->get_para("ctr_file"));
+        cfg_info.addcfgfile(cl->get_para("ctr_file"));
     }
-
     //set para
-    if(!ctp_quote_log.set_file(simu_cfg.getparam("quote_dir")+"/"+QDateTime::currentDateTime().toString("yyyyMMdd_hh_mm_ss").toStdString()+".csv"))
+    if(!ctp_quote_log.set_file(cfg_info.getparam("quote_dir")+"/"+QDateTime::currentDateTime().toString("yyyyMMdd_hh_mm_ss").toStdString()+".csv"))
     {
-        cerr<<"STDERR　qoute dir error"<<endl;
+        cerr<<"STDERR qoute dir error"<<endl;
         return 0;
     }
-    //connect broadcast quote from ctp_log to udp_sender
-    udp_sender sender;
+
     QObject::connect(&ctp_quote_log, &ctp_log::broadcast_quote, &sender, &udp_sender::broadcast_string);
+
+
     sender.init();
-    //set cm ordermanager and tactic
-    ctp_manager * cm=new ctp_manager();
     cm->init();
 
     return a.exec();
