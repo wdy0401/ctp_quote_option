@@ -1,4 +1,4 @@
--cfg c:/cfg/option_record.cfg -ctr_file c:/tmp/option_INSTRUMENT_ID_20160606.csv -quuote_dir e:/daily_tick_option
+-cfg c:/cfg/future_record.cfg -ctr_file c:/tmp/20160608.txt -quuote_dir e:/record
 
 用于每日接受ctp的tick数据
 

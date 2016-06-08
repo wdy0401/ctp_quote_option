@@ -106,7 +106,7 @@ void ctp_quote::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin,	CThos
 void ctp_quote::SubscribeMarketData()
 {
     int iResult;
-    if(false)
+    if(nppInstrumentID>0)
     {
        iResult = pUserApi->SubscribeMarketData(ppInstrumentID, nppInstrumentID);
     }
