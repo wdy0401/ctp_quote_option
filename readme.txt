@@ -1,8 +1,10 @@
-ÓÃÓÚÃ¿ÈÕ½ÓÊÜctpµÄtickÊý¾Ý
+-cfg c:/cfg/option_record.cfg -ctr_file c:/tmp/option_INSTRUMENT_ID_20160606.csv -quuote_dir e:/daily_tick_option
 
-Ê¹ÓÃUDP·¢ËÍÊý¾ÝÊ±»áÓÐ¶ª°üÏÖÏó
-  ²âÊÔ¶ª°üÂÊ
-    ²âÊÔ±¾»ú½ÓÊÕÓëËü»ú½ÓÊÕ
-      ÒÀ¾ÉÊ¹ÓÃUDP
-      ²âÊÔtcp
-        ¶ª°ü£¿¿¨¶Ù£¿
+ç”¨äºŽæ¯æ—¥æŽ¥å—ctpçš„tickæ•°æ®
+
+ä½¿ç”¨UDPå‘é€æ•°æ®æ—¶ä¼šæœ‰ä¸¢åŒ…çŽ°è±¡
+  æµ‹è¯•ä¸¢åŒ…çŽ‡
+    æµ‹è¯•æœ¬æœºæŽ¥æ”¶ä¸Žå®ƒæœºæŽ¥æ”¶
+      ä¾æ—§ä½¿ç”¨UDP
+      æµ‹è¯•tcp
+        ä¸¢åŒ…ï¼Ÿå¡é¡¿ï¼Ÿ
