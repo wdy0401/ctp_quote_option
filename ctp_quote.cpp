@@ -18,7 +18,7 @@
 
 #include"ctp_quote_qthread.h"
 extern cfg cfg_info;
-extern wtimer tm;
+extern wtimer wtm;
 
 
 using namespace std;
@@ -134,7 +134,7 @@ void ctp_quote::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *p)
 {
     //tm must be set before any slots.
     //测试可知 复制p 再传送 会有日期错误
-    tm.settic(atof(wfunction::ctp_time_char_convert(p->UpdateTime,sizeof(TThostFtdcTimeType))));
+    wtm.settic(atof(wfunction::ctp_time_char_convert(p->UpdateTime,sizeof(TThostFtdcTimeType))));
     emit pqfather->broadcast_marketdata(p);
 }
 bool ctp_quote::IsErrorRspInfo(CThostFtdcRspInfoField *pRspInfo)
