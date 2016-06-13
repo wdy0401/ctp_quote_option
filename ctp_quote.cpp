@@ -5,7 +5,7 @@
 #include<string>
 #include<sstream>
 #include<list>
-#include<windows.h>
+//#include<windows.h>
 
 #include <QCoreApplication>
 
@@ -144,25 +144,25 @@ bool ctp_quote::IsErrorRspInfo(CThostFtdcRspInfoField *pRspInfo)
         cout << "--->>> ErrorID=" << pRspInfo->ErrorID << ", ErrorMsg=" << pRspInfo->ErrorMsg << endl;
     return bResult;
 }
-char *ctp_quote::mk_quote_con_dir()
-{
-    cerr << endl << "mk_quote_con_dir" <<endl;
-    string exedir=cfg_info.get_para("QUOTE_CON_PATH");
-    if(exedir.size()>0)
-    {
-        wfunction::wmkdir(exedir);
-    }
-    else
-    {
-        exedir=QCoreApplication::applicationFilePath().toStdString();
-        exedir=exedir.erase(exedir.find_last_of("/"),exedir.size());
-        exedir=exedir+"/quote_con";
-        wfunction::wmkdir(exedir);
-    }
-//    exedir+="/";
-    exedir=wfunction::replacechar(exedir,"/","\\");
-    cerr<<"exedir "<<exedir<<endl;
-    char a[]="quote_con";
-    return a;
-//    return const_cast<char*>(exedir.c_str());
-}
+//char *ctp_quote::mk_quote_con_dir()
+//{
+//    cerr << endl << "mk_quote_con_dir" <<endl;
+//    string exedir=cfg_info.get_para("QUOTE_CON_PATH");
+//    if(exedir.size()>0)
+//    {
+//        wfunction::wmkdir(exedir);
+//    }
+//    else
+//    {
+//        exedir=QCoreApplication::applicationFilePath().toStdString();
+//        exedir=exedir.erase(exedir.find_last_of("/"),exedir.size());
+//        exedir=exedir+"/quote_con";
+//        wfunction::wmkdir(exedir);
+//    }
+////    exedir+="/";
+//    exedir=wfunction::replacechar(exedir,"/","\\");
+//    cerr<<"exedir "<<exedir<<endl;
+//    char a[]="quote_con";
+//    return a;
+////    return const_cast<char*>(exedir.c_str());
+//}

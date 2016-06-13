@@ -39,5 +39,6 @@ HEADERS += \
 
 win32: LIBS += -L$$PWD/../libs/ctp_option/ -lthostmduserapi
 
+unix:!macx: LIBS += -L$$PWD/../libs/ctp/ -lthostmduserapi
 INCLUDEPATH += $$PWD/../libs/ctp_option
 DEPENDPATH += $$PWD/../libs/ctp_option
